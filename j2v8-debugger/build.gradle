@@ -10,9 +10,6 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -26,22 +23,16 @@ android {
         targetCompatibility 1.8
         sourceCompatibility 1.8
     }
-
-    testOptions {
-        unitTests {
-            includeAndroidResources = true
-        }
-    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //xxx: remove when latest J2V8 version (4.8+) will be released on Mac and Windows:
-    implementation project(':j2v8backport')
+//    implementation project(':j2v8backport')
 
     // J2V8 Runtime
-    api 'com.eclipsesource.j2v8:j2v8:4.8.2@aar'
+    api 'com.eclipsesource.j2v8:j2v8:5.0.103@aar'
     api 'com.facebook.stetho:stetho:1.5.0'
 
 //    //run tests on mac os x on latest j2v8 version available
@@ -52,18 +43,6 @@ dependencies {
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:support-annotations:28.0.0'
-
-    testImplementation 'junit:junit:4.12'
-    //todo replace old Mockito tests with MockK
-    testImplementation "org.mockito:mockito-core:$mockitoVersion"
-    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
-    testImplementation 'com.google.guava:guava:26.0-android'
-
-    testImplementation "io.mockk:mockk:$mockkVersion"
-    testImplementation "org.robolectric:robolectric:$robolectricVersion"
-
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 repositories {
     mavenCentral()

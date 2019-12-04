@@ -1,7 +1,7 @@
 package com.alexii.j2v8debugging.sample.di
 
 import android.content.Context
-import com.alexii.j2v8debugger.ScriptSourceProvider
+import com.alexii.j2v8debuggerJ.ScriptSourceProvider
 import com.alexii.j2v8debugging.sample.App
 import com.alexii.j2v8debugging.sample.SimpleScriptProvider
 import dagger.Binds

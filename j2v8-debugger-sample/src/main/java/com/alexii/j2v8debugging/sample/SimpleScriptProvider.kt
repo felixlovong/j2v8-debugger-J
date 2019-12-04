@@ -1,6 +1,6 @@
 package com.alexii.j2v8debugging.sample
 
-import com.alexii.j2v8debugger.ScriptSourceProvider
+import com.alexii.j2v8debuggerJ.ScriptSourceProvider
 import java.text.DateFormat
 import java.util.*
 import javax.inject.Inject
@@ -20,7 +20,9 @@ class SimpleScriptProvider @Inject constructor() : ScriptSourceProvider {
         dateString = DateFormat.getTimeInstance().format(Date())
     }
 
-    override val allScriptIds = listOf(scriptName)
+    override fun getAllScriptIds(): MutableCollection<String> {
+        return listOf(scriptName) as MutableCollection<String>
+    }
 
     override fun getSource(scriptId: String): String {
         val jsScript = ("""

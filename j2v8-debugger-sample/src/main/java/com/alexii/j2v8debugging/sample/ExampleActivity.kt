@@ -5,9 +5,9 @@ import android.support.design.widget.Snackbar
 import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
-import com.alexii.j2v8debugger.StethoHelper
-import com.alexii.j2v8debugger.V8Helper
-import com.alexii.j2v8debugger.releaseDebuggable
+import com.alexii.j2v8debuggerJ.StethoHelper
+import com.alexii.j2v8debuggerJ.V8Helper
+import com.alexii.j2v8debuggerJ.V8HelperExtensions
 import com.alexii.j2v8debugging.R
 import com.eclipsesource.v8.V8
 import dagger.android.AndroidInjection
@@ -65,7 +65,7 @@ class ExampleActivity : AppCompatActivity() {
     }
 
     private fun releaseDebuggableV8() {
-        v8Executor.execute { v8.releaseDebuggable() }
+        v8Executor.execute { V8HelperExtensions.releaseDebuggable(v8) }
     }
 
     private fun updateUserToRandom() {

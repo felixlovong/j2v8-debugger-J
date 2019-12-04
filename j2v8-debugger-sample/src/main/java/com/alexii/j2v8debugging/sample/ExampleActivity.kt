@@ -41,7 +41,7 @@ class ExampleActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            val scriptName = "hello-world"
+            val scriptName = "hello-world2"
             val jsScript = simpleScriptProvider.getSource(scriptName)
 
             v8Executor.submit {

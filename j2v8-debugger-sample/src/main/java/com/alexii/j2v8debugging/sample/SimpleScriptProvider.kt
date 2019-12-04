@@ -10,6 +10,7 @@ import javax.inject.Singleton
 class SimpleScriptProvider @Inject constructor() : ScriptSourceProvider {
 
     private val scriptName = "hello-world"
+    private val scriptName2 = "hello-world2"
     private lateinit var dateString: String
 
     init {
@@ -21,7 +22,7 @@ class SimpleScriptProvider @Inject constructor() : ScriptSourceProvider {
     }
 
     override fun getAllScriptIds(): MutableCollection<String> {
-        return listOf(scriptName) as MutableCollection<String>
+        return listOf(scriptName, scriptName2) as MutableCollection<String>
     }
 
     override fun getSource(scriptId: String): String {
@@ -44,7 +45,28 @@ class SimpleScriptProvider @Inject constructor() : ScriptSourceProvider {
             |})
         """).trimMargin()
 
+        val jsScript2 = ("""
+            |var globalHi = "hi"
+            |
+            |function main(payloadObject) {
+            |  var hello = 'hello, ';
+            |  var world = 'world2';
+            |
+            |  var testReload = '$dateString';
+            |
+            |  return globalHi + ' and ' + hello + world + ' at ' + testReload + ' with ' + payloadObject.load + ' !';
+            |}
+            |
+            |main({
+            |    load: 'object based payload',
+            |    redundantLoad: 'this is ignored',
+            |    callBack: function testCallBack() { print('Call back!') }
+            |})
+        """).trimMargin()
+
         if (scriptId == scriptName) return jsScript
+        if (scriptId == scriptName2) return jsScript2
+
 
         return "JS source not found :("
     }
